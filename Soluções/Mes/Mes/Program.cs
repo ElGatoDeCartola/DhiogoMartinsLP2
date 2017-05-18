@@ -14,10 +14,10 @@ namespace ConsoleApplication1
 
             dta = Console.ReadLine();
 
-            dia = int.Parse(dta.Substring(0,2));
-            
-            if(dia < 10)
-                mes = dta.Substring(5,4);
+            dia = int.Parse(dta.Substring(0, 2));
+
+            if (dia < 10)
+                mes = dta.Substring(5, 4);
 
             else
                 mes = dta.Substring(6, 4);
@@ -28,7 +28,7 @@ namespace ConsoleApplication1
             else if (mes == "març" || mes == "Març")
                 dia = dia + 31 + 28;
             else if (mes == "abri" || mes == "Abri")
-                dia = dia + (2*31) + 28;
+                dia = dia + (2 * 31) + 28;
             else if (mes == "maio" || mes == "Maio")
                 dia = dia + 30 + (2 * 31) + 28;
             else if (mes == "junh" || mes == "Junh")
@@ -47,4 +47,6 @@ namespace ConsoleApplication1
                 dia = dia + (4 * 30) + (6 * 31) + 28;
 
             Console.WriteLine("{0}º", dia);
-
+        }
+    }
+}
