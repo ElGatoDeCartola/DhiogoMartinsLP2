@@ -13,23 +13,28 @@ namespace ConsoleApplication1
             public string modelo;
             public double cv;
             public double km;
+            public string cor;
+            public string fabricante;
+            public int anoFab;
         }
 
         static void Main(string[] args)
         {
-             Carro Car;
+            int n = int.Parse(Console.ReadLine());
+            Carro[] Car = new Carro[n];
 
-            Console.WriteLine("Quantidade de carros");
-            int N = Int32.Parse(Console.ReadLine());
-
-            for (int i = 1; i <= N; i++)
+            for (int i = 1; i <= n; i++)
             {
-                Car.modelo = Console.ReadLine();
-                Car.km = Double.Parse(Console.ReadLine());
-                Car.cv = Double.Parse(Console.ReadLine());
-
-                Console.WriteLine(Classificar(Car));
+                Car[i].modelo = Console.ReadLine();
+                Car[i].km = Double.Parse(Console.ReadLine());
+                Car[i].cv = Double.Parse(Console.ReadLine());
+                Car[i].cor = Console.ReadLine();
+                Car[i].fabricante = Console.ReadLine();
+                Car[i].anoFab = Int32.Parse(Console.ReadLine());
             }
+
+            for (int i = 0; i < n; i++)
+                Console.WriteLine(Classificar(Car[i]));
         }
 
         public static string Classificar(Carro c)
@@ -50,8 +55,27 @@ namespace ConsoleApplication1
             else
                 pot = "Potente";
 
-            return String.Format("{0} - {1} - {2}", c.modelo, uso, pot); 
-
+            return String.Format("{0} - {1} - {2}", c.modelo, uso, pot);
         }
+
+        public static void AterarModelo(Carro c)
+        {
+            c.km = Double.Parse(Console.ReadLine());
+        }
+
+        public static void AterarCor(Carro c)
+        {
+            c.cor = Console.ReadLine();
+        }
+
+        public static int CalcularTaxaDeUso(Carro c)
+        {
+            int anoHJ, uso;
+
+            anoHJ = Int32.Parse(Console.ReadLine());
+            uso = anoHJ - c.anoFab;
+            return uso;
+        }
+
      }
 }
