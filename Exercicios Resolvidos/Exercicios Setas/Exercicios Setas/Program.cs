@@ -24,64 +24,31 @@ namespace ObjetosNoPlano
             obj.X = x;
             obj.Y = y;
 
-            Console.Write("Digite comando: ");
-            ConsoleKey comando = Console.ReadKey().Key;
-
-            if (comando == ConsoleKey.RightArrow)
+            Console.WriteLine("Digite comando: ");
+            while (Console.ReadKey().Key != ConsoleKey.Escape)
             {
-                obj.AndarParaADireita();
-                Console.WriteLine(obj.Coordenadas());
-            }
-            if (comando == ConsoleKey.LeftArrow)
-            {
-                obj.AndarParaAEsquerda();
-                Console.WriteLine(obj.Coordenadas());
-            }
-            if (comando == ConsoleKey.DownArrow)
-            {
-                obj.AndarParaBaixo();
-                Console.WriteLine(obj.Coordenadas());
-            }
-            if (comando == ConsoleKey.UpArrow)
-            {
-                obj.AndarParaCima();
-                Console.WriteLine(obj.Coordenadas());
+                ConsoleKey comando = Console.ReadKey().Key;
+                if (comando == ConsoleKey.RightArrow)
+                {
+                    obj.AndarParaADireita();
+                    Console.WriteLine(obj.Coordenadas());
+                }
+                if (comando == ConsoleKey.LeftArrow)
+                {
+                    obj.AndarParaAEsquerda();
+                    Console.WriteLine(obj.Coordenadas());
+                }
+                if (comando == ConsoleKey.DownArrow)
+                {
+                    obj.AndarParaBaixo();
+                    Console.WriteLine(obj.Coordenadas());
+                }
+                if (comando == ConsoleKey.UpArrow)
+                {
+                    obj.AndarParaCima();
+                    Console.WriteLine(obj.Coordenadas());
+                }
             }
         }
     }
 }
-/*
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ConsoleApplication1
-{
-    class Objeto2D
-    {
-        public int X;
-        public int Y;
-        public void AndarParaADireita()
-        {
-            X++;
-        }
-        public void AndarParaAEsquerda()
-        {
-            X--;
-        }
-        public void AndarParaCima()
-        {
-            Y++;
-        }
-        public void AndarParaBaixo()
-        {
-            Y--;
-        }
-        public string Coordenadas()
-        {
-            return String.Format("({0} {1})" ,Y , X );
-        }
-    }
-}
-/*
