@@ -8,9 +8,9 @@ namespace _8_Empresa
 {
     class Funcionario
     {
-       public Funcionario(int r)
+       public Funcionario(int h)
        {
-            Numero_Registro = r;
+            Numero_Registro = h;
        }
         public int Numero_Registro { get; set; }
         public string Nome { get; set; }
