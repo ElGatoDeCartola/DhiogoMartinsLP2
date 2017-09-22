@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConversorMedidas
+namespace _7___Conversor
 {
     public static class Conversor
     {
