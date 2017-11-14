@@ -39,7 +39,7 @@ namespace AulaLP_BD
                 }
                 else if (x == 2)
                 {
-                    
+
                 }
                 else if (x == 3)
                 {
@@ -53,9 +53,19 @@ namespace AulaLP_BD
             connect.Open();
             for (int i = 0; i < c.Count; i++)
             {
-                string r = string.Format("INSERT INTO Carro(Marca , Modelo , Cor , Placa, Potencia) VALUES ('{0}','{1}','{2}','{3}','{4}');", c[i].Marca, c[i].Modelo, c[i].Cor, c[i].Placa, c[i].Potencia);
+                cmd.Parameters.AddWithValue("Marca", c[i].Marca);
+                cmd.Parameters.AddWithValue("Modelo", c[i].Modelo);
+                cmd.Parameters.AddWithValue("Cor", c[i].Cor);
+                cmd.Parameters.AddWithValue("Placa", c[i].Placa);
+                cmd.Parameters.AddWithValue("Potencia", c[i].Potencia);
+                string r = string.Format("INSERT INTO Carro(Marca , Modelo , Cor , Placa, Potencia) VALUES (@Marca , @Modelo , @Cor , @Placa , @Potencia);");
                 cmd.CommandText = r;
                 cmd.ExecuteNonQuery();
+                cmd.Parameters.RemoveAt("Marca");
+                cmd.Parameters.RemoveAt("Modelo");
+                cmd.Parameters.RemoveAt("Cor");
+                cmd.Parameters.RemoveAt("Placa");
+                cmd.Parameters.RemoveAt("Potencia");
             }
             connect.Close();
             Console.WriteLine("ok");
