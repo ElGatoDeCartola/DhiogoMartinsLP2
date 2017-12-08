@@ -30,14 +30,17 @@ namespace JogoDaForca
             string TxtPalavra = txt_Palavra.Text;
             int TxtTamanho = txt_Palavra.Text.Length;
             string block = "";
-            string vazio = "";
+            string vazio = " ";
             for (int i = 0; i < TxtTamanho; i++)
-            {
+            {   
                 if (TxtPalavra[i] != vazio[0])
                 {
-
+                    block = block + "*";
                 }
-                block = block + "*";
+                else
+                {
+                    block = block + " ";
+                }   
             }
             txtblock_Palavra.Text = block;
         }
