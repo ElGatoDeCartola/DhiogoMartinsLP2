@@ -3,12 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="187.86" Width="327.076">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFE3F900" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Button x:Name="btnOk_Palavra" Content="OK" HorizontalAlignment="Left" Margin="187,10,0,0" Width="112" FontFamily="Times New Roman" FontSize="20" Height="30" VerticalAlignment="Top" Click="btnOk_Palavra_Click"/>
         <TextBox x:Name="txt_Palavra" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" SelectionOpacity="1" Text="Digite Aqui a Palavra"  FontSize="18" FontFamily="Times New Roman" MouseEnter="txt_Palavra_MouseEnter_1"/>
         <TextBlock x:Name="txtblock_Palavra" HorizontalAlignment="Left" Margin="10,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="289" FontSize="20" FontFamily="Times New Roman"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="64" Margin="10,45,0,0" VerticalAlignment="Top" Width="289"/>
-        <TextBox x:Name="txt_Letra" HorizontalAlignment="Left" Height="30" Margin="10,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" SelectionOpacity="1" Text="Digite Aqui a Letra" FontSize="18" FontFamily="Times New Roman" MouseEnter="txt_Letra_MouseEnter_1"/>
-        <Button x:Name="btnOk_Letra" Content="OK" HorizontalAlignment="Left" Margin="187,114,0,0" Width="112" FontFamily="Times New Roman" FontSize="20" Height="30" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_Letra" HorizontalAlignment="Left" Height="30" Margin="10,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" SelectionOpacity="1" Text="Digite Aqui a Letra" FontSize="18" FontFamily="Times New Roman" MouseEnter="txt_Letra_MouseEnter_1" MaxLength="1"/>
+        <Button x:Name="btnOk_Letra" Content="OK" HorizontalAlignment="Left" Margin="187,114,0,0" Width="112" FontFamily="Times New Roman" FontSize="20" Height="30" VerticalAlignment="Top" Click="btnOk_Letra_Click"/>
 
     </Grid>
 </Window>

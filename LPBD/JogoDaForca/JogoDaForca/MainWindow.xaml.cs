@@ -20,16 +20,15 @@ namespace JogoDaForca
     /// </summary>
     public partial class MainWindow : Window
     {
+        string block = "";
         public MainWindow()
         {
             InitializeComponent();
         }
-
         private void btnOk_Palavra_Click(object sender, RoutedEventArgs e)
         {
             string TxtPalavra = txt_Palavra.Text;
             int TxtTamanho = txt_Palavra.Text.Length;
-            string block = "";
             string vazio = " ";
             for (int i = 0; i < TxtTamanho; i++)
             {   
@@ -43,6 +42,10 @@ namespace JogoDaForca
                 }   
             }
             txtblock_Palavra.Text = block;
+            btnOk_Palavra.IsEnabled = false;
+            txt_Palavra.Clear();
+            txt_Palavra.IsEnabled = false;
+            
         }
 
         private void txt_Palavra_MouseEnter_1(object sender, MouseEventArgs e)
@@ -53,6 +56,19 @@ namespace JogoDaForca
         private void txt_Letra_MouseEnter_1(object sender, MouseEventArgs e)
         {
             txt_Letra.Clear();
+        }
+
+        private void btnOk_Letra_Click(object sender, RoutedEventArgs e)
+        {
+            char[] p = new char[txt_Palavra.Text.Length];
+            p = block.ToCharArray(0, block.Length);
+            for (int i = 0; i < txt_Palavra.Text.Length; i++)
+			{
+                if(char.ToUpper(txt_Letra.Text[0]) == char.ToUpper(txt_Palavra.Text[i]))
+                {
+                    p[i] = txt_Letra.Text[0];
+                }
+			}
         }
     }
 }
