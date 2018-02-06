@@ -16,6 +16,18 @@ namespace ProjetoConsole
             Carro carro = new Carro();
             Funcionario funcionario = new Funcionario();
             x = 1;
+            string Modelo = "";
+            int Potencia = 0;
+            string Marca = "";
+            string Cor = "";
+            int Preço = 0;
+            int Porta = 0;
+            string Cambio = "";
+            string Traçao = "";
+            int Quilometro = 0;
+            int Id = 0;
+            int Lucro = 0;
+            int Total = 0;
             SqlCommand cmd = new SqlCommand();
             SqlConnection conec = new SqlConnection("Data Source=localhost;Initial Catalog=LPBD;Integrated Security=SSPI");
             cmd.Connection = conec;
@@ -31,7 +43,9 @@ namespace ProjetoConsole
                 Console.WriteLine("6 - Deletar funcionario");
                 Console.WriteLine("7 - Exibir funcionarios");
                 Console.WriteLine("8 - Alterar funcionario");
-                Console.WriteLine("9 - Calcular total de venda de carros");
+                Console.WriteLine("9 - Efetuar uma venda");
+                Console.WriteLine("10 - Exibir carros vendidos");
+                Console.WriteLine("11 - Calcular total de venda de carros");
                 Console.WriteLine("0 - Encerrar");
                 Console.WriteLine("-------------------------------------------------------");
                 Console.Write("Resposta: ");
@@ -74,7 +88,7 @@ namespace ProjetoConsole
                     cmd.Parameters.AddWithValue("Marca", carro.Marca);
                     cmd.Parameters.AddWithValue("Modelo", carro.Modelo);
                     cmd.Parameters.AddWithValue("Cor", carro.Cor);
-                    cmd.Parameters.AddWithValue("Pot", carro.Potencia);
+                    cmd.Parameters.AddWithValue("Potencia", carro.Potencia);
                     cmd.Parameters.AddWithValue("Porta", carro.Porta);
                     cmd.Parameters.AddWithValue("Preço", carro.Preço);
                     cmd.Parameters.AddWithValue("Cambio", carro.Cambio);
@@ -96,6 +110,7 @@ namespace ProjetoConsole
                     cmd.Parameters.RemoveAt("Cambio");
                     cmd.Parameters.RemoveAt("Traçao");
                     cmd.Parameters.RemoveAt("Quilometro");
+                    cmd.Parameters.RemoveAt("Potencia");
 
                     conec.Close();
                     Console.WriteLine("Efetuado com sucesso");
@@ -272,16 +287,16 @@ namespace ProjetoConsole
                     {
                         while (reader.Read())
                         {
-                            int Id = reader.GetInt32(0);
-                            string Modelo = reader.GetString(1);
-                            int Potencia = reader.GetInt32(2);
-                            string Marca = reader.GetString(3);
-                            string Cor = reader.GetString(4);
-                            int Preço = reader.GetInt32(5);
-                            int Porta = reader.GetInt32(6);
-                            string Cambio = reader.GetString(7);
-                            string Traçao = reader.GetString(8);
-                            int Quilometro = reader.GetInt32(9);
+                            Id = reader.GetInt32(0);
+                            Modelo = reader.GetString(1);
+                            Potencia = reader.GetInt32(2);
+                            Marca = reader.GetString(3);
+                            Cor = reader.GetString(4);
+                            Preço = reader.GetInt32(5);
+                            Porta = reader.GetInt32(6);
+                            Cambio = reader.GetString(7);
+                            Traçao = reader.GetString(8);
+                            Quilometro = reader.GetInt32(9);
                             Console.WriteLine("*[{0} = Id] [{1} = Modelo] [{2} = Potencia] [{3} = Marca] [{4} = Cor] [{5} = Preço] [{6} = Numero de portas] [{7} = Cambio] [{8} = Traçao] [{9} = Quilometro]*", Id, Modelo, Potencia, Marca, Cor, Preço , Porta , Cambio , Traçao , Quilometro);
                         }
                     }
@@ -326,7 +341,7 @@ namespace ProjetoConsole
                     cmd.Parameters.AddWithValue("Marca", carro.Marca);
                     cmd.Parameters.AddWithValue("Modelo", carro.Modelo);
                     cmd.Parameters.AddWithValue("Cor", carro.Cor);
-                    cmd.Parameters.AddWithValue("Pot", carro.Potencia);
+                    cmd.Parameters.AddWithValue("Potencia", carro.Potencia);
                     cmd.Parameters.AddWithValue("Porta", carro.Porta);
                     cmd.Parameters.AddWithValue("Preço", carro.Preço);
                     cmd.Parameters.AddWithValue("Cambio", carro.Cambio);
@@ -348,6 +363,7 @@ namespace ProjetoConsole
                     cmd.Parameters.RemoveAt("Cambio");
                     cmd.Parameters.RemoveAt("Traçao");
                     cmd.Parameters.RemoveAt("Quilometro");
+                    cmd.Parameters.RemoveAt("Potencia");
 
                     conec.Close();
                     Console.WriteLine("Efetuado com sucesso");
@@ -422,11 +438,11 @@ namespace ProjetoConsole
                     {
                         while (reader.Read())
                         {
-                            int Id = reader.GetInt32(0);
+                            Id = reader.GetInt32(0);
                             string Nome = reader.GetString(1);
                             string Cpf = reader.GetString(2);
                             string Endereço = reader.GetString(3);
-                            char Sexo = reader.GetChar(4);
+                            string Sexo = reader.GetString(4);
                             int Salario = reader.GetInt32(5);
 
                             Console.WriteLine("*[{0} = Id] [{1} = Nome] [{2} = CPF] [{3} = Endereço] [{4} = Sexo] [{5} = Salario]*", Id, Nome , Cpf , Endereço , Sexo , Salario);
@@ -479,6 +495,109 @@ namespace ProjetoConsole
  
                     conec.Close();
                     Console.WriteLine("Efetuado com sucesso");
+                }
+                if (x == 9)
+                {
+                    Console.Write("   Digite o id do carro a ser vendido: ");
+                    int Cid = int.Parse(Console.ReadLine());
+                    cmd.Parameters.AddWithValue("id", Cid);
+
+                    cmd.CommandText = "SELECT * from Carro where Id = @id";
+                    conec.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Id = reader.GetInt32(0);
+                            Modelo = reader.GetString(1);
+                            Potencia = reader.GetInt32(2);
+                            Marca = reader.GetString(3);
+                            Cor = reader.GetString(4);
+                            Preço = reader.GetInt32(5);
+                            Porta = reader.GetInt32(6);
+                            Cambio = reader.GetString(7);
+                            Traçao = reader.GetString(8);
+                            Quilometro = reader.GetInt32(9);
+                        }
+                    }
+                    cmd.Parameters.RemoveAt("Id");
+                    reader.Close();
+                    cmd.Parameters.AddWithValue("Id", Id);
+                    cmd.Parameters.AddWithValue("Modelo", Modelo);
+                    cmd.Parameters.AddWithValue("Potencia", Potencia);
+                    cmd.Parameters.AddWithValue("Marca", Marca);
+                    cmd.Parameters.AddWithValue("Cor", Cor);
+                    cmd.Parameters.AddWithValue("Preço", Preço);
+                    cmd.Parameters.AddWithValue("Porta", Porta);
+                    cmd.Parameters.AddWithValue("Cambio", Cambio);
+                    cmd.Parameters.AddWithValue("Traçao", Traçao);
+                    cmd.Parameters.AddWithValue("Quilometro", Quilometro);
+
+                    comando = string.Format(@"INSERT 
+                                        INTO Vendas(Id ,Modelo , Potencia , Marca , Cor , Preço , Porta , Cambio , Traçao , Quilometro) 
+                                        VALUES (@Id, @Modelo, @Potencia, @Marca, @Cor, @Preço , @Porta , @Cambio , @Traçao , @Quilometro);");
+                    cmd.CommandText = comando;
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = @"DELETE FROM Carro
+                                            WHERE Id = @id";
+                    cmd.ExecuteNonQuery();
+                    conec.Close();
+
+                    cmd.Parameters.RemoveAt("Id");
+                    cmd.Parameters.RemoveAt("Marca");
+                    cmd.Parameters.RemoveAt("Modelo");
+                    cmd.Parameters.RemoveAt("Cor");
+                    cmd.Parameters.RemoveAt("Porta");
+                    cmd.Parameters.RemoveAt("Preço");
+                    cmd.Parameters.RemoveAt("Cambio");
+                    cmd.Parameters.RemoveAt("Traçao");
+                    cmd.Parameters.RemoveAt("Quilometro");
+                    cmd.Parameters.RemoveAt("Potencia");
+
+                    Console.WriteLine("Efetuado com sucesso");
+                }
+                if (x == 10)
+                {
+                    cmd.CommandText = "SELECT * from Vendas";
+                    conec.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Id = reader.GetInt32(0);
+                            Modelo = reader.GetString(1);
+                            Potencia = reader.GetInt32(2);
+                            Marca = reader.GetString(3);
+                            Cor = reader.GetString(4);
+                            Preço = reader.GetInt32(5);
+                            Porta = reader.GetInt32(6);
+                            Cambio = reader.GetString(7);
+                            Traçao = reader.GetString(8);
+                            Quilometro = reader.GetInt32(9);
+                            Console.WriteLine("*[{0} = Id] [{1} = Modelo] [{2} = Potencia] [{3} = Marca] [{4} = Cor] [{5} = Preço] [{6} = Numero de portas] [{7} = Cambio] [{8} = Traçao] [{9} = Quilometro]*", Id, Modelo, Potencia, Marca, Cor, Preço, Porta, Cambio, Traçao, Quilometro);
+                        }
+                    }
+                    conec.Close();
+                    Console.WriteLine("Efetuado com sucesso");
+                }
+                if (x == 11)
+                {
+                    cmd.CommandText = "SELECT * from Vendas";
+                    conec.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Lucro = reader.GetInt32(6);
+                            Total += Lucro;
+                        }
+                    }
+                    conec.Close();
+                    Console.WriteLine("*[{0} = Total de lucro*]" , Total);
                 }
             }
         }

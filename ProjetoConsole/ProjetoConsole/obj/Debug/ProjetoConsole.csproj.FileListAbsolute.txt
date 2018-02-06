@@ -5,3 +5,9 @@ C:\Users\Sky.DESKTOP-CQBISUC\source\repos\ProjetoConsole\ProjetoConsole\bin\Debu
 C:\Users\Sky.DESKTOP-CQBISUC\source\repos\ProjetoConsole\ProjetoConsole\bin\Debug\ProjetoConsole.pdb
 C:\Users\Sky.DESKTOP-CQBISUC\source\repos\ProjetoConsole\ProjetoConsole\obj\Debug\ProjetoConsole.exe
 C:\Users\Sky.DESKTOP-CQBISUC\source\repos\ProjetoConsole\ProjetoConsole\obj\Debug\ProjetoConsole.pdb
+C:\Users\alunoct\Desktop\DhiogoMartinsLP2\ProjetoConsole\ProjetoConsole\bin\Debug\ProjetoConsole.exe.config
+C:\Users\alunoct\Desktop\DhiogoMartinsLP2\ProjetoConsole\ProjetoConsole\bin\Debug\ProjetoConsole.exe
+C:\Users\alunoct\Desktop\DhiogoMartinsLP2\ProjetoConsole\ProjetoConsole\bin\Debug\ProjetoConsole.pdb
+C:\Users\alunoct\Desktop\DhiogoMartinsLP2\ProjetoConsole\ProjetoConsole\obj\Debug\ProjetoConsole.csprojResolveAssemblyReference.cache
+C:\Users\alunoct\Desktop\DhiogoMartinsLP2\ProjetoConsole\ProjetoConsole\obj\Debug\ProjetoConsole.exe
+C:\Users\alunoct\Desktop\DhiogoMartinsLP2\ProjetoConsole\ProjetoConsole\obj\Debug\ProjetoConsole.pdb
